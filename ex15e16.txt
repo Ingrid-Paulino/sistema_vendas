@@ -1,0 +1,18 @@
+1 - O sistema considerou que apenas um caixa estava operando no supermercado. Cite um problema caso houvesse 
+mais de um caixa operando ao mesmo tempo no supermercado?
+    Resposta: Se tivermos mais de um caixa operando ao mesmo tempo e ambos acessarem os mesmos recursos 
+    compartilhados (o estoque de produtos), pode ocorrer uma situação chamada de condição de corrida (race condition). 
+    Isso acontece quando dois processos (no caso, caixas) acessam e modificam dados simultaneamente, 
+    podendo causar inconsistência nas informações.
+
+    Exemplo de problema:
+        Dois caixas tentam vender o mesmo produto, que tem apenas 1 unidade no estoque. Ambos verificam ao 
+        mesmo tempo que há 1 unidade disponível, ambos processam a venda, e o sistema permite vender duas unidades, 
+        mesmo havendo somente uma.
+
+2 - Qual seria uma possível solução para o problema anterior considerando o conteúdo apresentado no bloco?
+    Resposta: Uma solução comum para esse tipo de problema é adotar mecanismos de sincronização, como por exemplo:
+    Travas (locks/mutex): Antes de acessar ou modificar um recurso compartilhado, cada caixa precisa adquirir uma trava 
+    exclusiva desse recurso. Enquanto um caixa estiver acessando, os outros aguardam até que a trava seja liberada.
+    Assim, só um processo (caixa) pode atualizar o estoque de determinado produto de cada vez, evitando as condições de 
+    corrida e garantindo a consistência dos dados.
